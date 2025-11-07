@@ -1,13 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
-import { PrismaClient } from "@/generated/prisma/client";
-
-const prisma = new PrismaClient();
-
-const getPosts = createServerFn().handler(async () => {
-	const posts = await prisma.post.findMany();
-	return posts;
-});
+import { getPosts } from "@/server/posts";
 
 export const Route = createFileRoute("/posts/")({
 	component: RouteComponent,
